@@ -1,0 +1,4 @@
+print sum map read.lines relative "input.txt" 'line [
+    numbers: match line {/\d/}
+    to :integer ~"|first numbers||last numbers|"
+]
