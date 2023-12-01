@@ -6,7 +6,7 @@
 
 ---
 
-This repo is going to host my own solutions for [AOC 2023](https://adventofcode.com/), in [Arturo](https://arturo-lang.io/). Feel free to get some inspiration 🚀 (although I doubt I'd consider any of my solutions as *the* solution, but it's ok... haha)
+This repo is going to host my own solutions for [AOC 2023](https://adventofcode.com/), in [Arturo](https://arturo-lang.io/). Feel free to get some inspiration 🚀 (although I doubt I'd consider any of my solutions as *the* most optimal solution, but oh well... haha)
 
 If you have any questions/doubts, you got stuck at some problem, or you simply want to share your own Advent of Code solutions in Arturo, simply post it on [our dedicated GitHub discussion](https://github.com/arturo-lang/arturo/discussions/1297) or the [appropriate thread on our Discord Server](https://discord.com/channels/765519132186640445/1171429149353726062). 😉
 
