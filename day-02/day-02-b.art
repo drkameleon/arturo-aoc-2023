@@ -1,0 +1,6 @@
+getPower: $[arr]-> product map ['red 'green 'blue] 'col 
+    -> max map arr 'i -> get i col
+
+print sum map read.lines relative "input.txt" 'line -> 
+    getPower map split.by:";" last split.by:":" line 'item -> 
+        extend #[red:0,green:0,blue:0] # to :block replace item {/(\d+) (\w+)/} "$2: $1"

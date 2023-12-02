@@ -1,0 +1,6 @@
+red: $[x]-> x =< 12, green: $[x]-> x =< 13, blue: $[x]-> x =< 14
+
+print sum map.with:'i read.lines relative "input.txt" 'line -> 
+    (all? map split.by:";" last split.by:":" line 'item -> 
+        all? @ to :block replace item {/(\d+) (\w+)/} "$2 $1")? 
+            -> i+1 -> 0
