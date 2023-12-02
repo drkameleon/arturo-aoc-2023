@@ -1,4 +1,4 @@
-getPower: $[arr]-> product map ['red 'green 'blue] 'col 
+getPower: $[arr]-> product map [red green blue] 'col 
     -> max map arr 'i -> get i col
 
 print sum map read.lines relative "input.txt" 'line -> 
