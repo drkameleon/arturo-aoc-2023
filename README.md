@@ -1,4 +1,7 @@
-<h1 align="center">Advent of Code 2023</h1>
+<h1 align="center">🎄 Advent of Code 2023
+    <img width="35" src="https://github.com/arturo-lang/arturo/blob/27c7ac35b4f986179893864fd1b80423392559b3/docs/images/logo.png?raw=true#gh-light-mode-only"/>
+<img width="35" src="https://github.com/arturo-lang/arturo/blob/27c7ac35b4f986179893864fd1b80423392559b3/docs/images/logo-lightgray.png?raw=true#gh-dark-mode-only"/>
+</p></h1>
 <p align="center">
   <img src="https://img.shields.io/github/license/arturo-lang/grafito?style=for-the-badge">
   <img src="https://img.shields.io/badge/language-Arturo-orange.svg?style=for-the-badge">
@@ -6,7 +9,7 @@
 
 ---
 
-This repo is going to host my own solutions for [AOC 2023](https://adventofcode.com/), in [Arturo](https://arturo-lang.io/). Feel free to get some inspiration 🚀 (although I doubt I'd consider any of my solutions as *the* most optimal solution, but oh well... haha)
+This repo is going to host my own solutions for [AOC 2023](https://adventofcode.com/), in **[Arturo](https://arturo-lang.io/)**. Feel free to get some inspiration 🚀 (although I doubt I'd consider any of my solutions as *the* most optimal solution, but oh well... haha)
 
 If you have any questions/doubts, you got stuck at some problem, or you simply want to share your own Advent of Code solutions in Arturo, simply post it on [our dedicated GitHub discussion](https://github.com/arturo-lang/arturo/discussions/1297) or the [appropriate thread on our Discord Server](https://discord.com/channels/765519132186640445/1171429149353726062). 😉
 
