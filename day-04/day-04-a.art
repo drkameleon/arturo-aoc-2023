@@ -1,0 +1,5 @@
+print sum map read.lines relative "input.txt" 'line [
+    winning: intersection match last split.by:":" first split.by:"|" line {/\d+/}
+                          match last split.by:"|" line {/\d+/}
+    (zero? winning)? -> 0 -> 2 ^ dec size winning
+]

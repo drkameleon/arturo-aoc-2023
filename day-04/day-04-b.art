@@ -1,0 +1,7 @@
+card: array.of: size lines: <= read.lines relative "input.txt" 1
+print sum map.with:'i lines 'line [
+    winning: intersection match last split.by:":" first split.by:"|" line {/\d+/}
+                          match last split.by:"|" line {/\d+/}
+    loop size winning 'x -> card\[i + x]: card\[i + x] + card\[i]
+    card\[i]
+]
