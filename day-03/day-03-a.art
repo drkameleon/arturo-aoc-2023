@@ -1,0 +1,8 @@
+lines: read.lines relative "input.txt"
+lines: @[repeat "." size first lines] ++ lines ++ @[repeat "." size first lines]
+
+print sum to [:integer] select flatten map 1..(size lines)-2 'i [
+    select get match.full lines\[i] {/\d+/} 'matches 'mtch ->
+        some? (i-1)..(i+1) 'x -> 
+            match?.in: (dec first mtch\1)..(inc last mtch\1) lines\[x] {/[^\d\.]/}
+] => string?
