@@ -1,0 +1,14 @@
+do (replace read ./"input.txt" ["\n\n"," map",":",{/(\w+)-to-/}] ["]","",":[",""]) ++ "]"
+
+loop ['soil, 'fertilizer, 'water, 'light, 'temperature, 'humidity, 'location] 'what [
+    data: var what
+    let what function [x] with 'data [
+        loop data [dest,src,width] ->
+            if and? [x >= src][x =< src+width]->
+                return dest + x - src
+        return x
+    ]
+]
+
+do :: print min map seeds 'seed -> 
+    location humidity temperature light water fertilizer soil seed
