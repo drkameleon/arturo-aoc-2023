@@ -1,0 +1,3 @@
+do replace read ./"input.txt" " " ""
+
+print enumerate 0..Time 't -> Distance < t * Time - t
