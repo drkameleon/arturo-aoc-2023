@@ -1,0 +1,4 @@
+do (replace read ./"input.txt" [":","\n"] [":[","]"]) ++ "]"
+
+print product map couple Time Distance 'td ->
+    enumerate 0..td\0 't -> td\1 < t * td\0 - t
