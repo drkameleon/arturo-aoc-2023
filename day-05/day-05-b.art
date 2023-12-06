@@ -1,0 +1,31 @@
+do (replace read ./"input.txt" ["\n\n"," map",":",{/(\w+)-to-/}] ["]","",":[",""]) ++ "]"
+
+loop ['soil, 'fertilizer, 'water, 'light, 'temperature, 'humidity, 'location] 'what [
+    data: var what
+    let what function [rs] with 'data [
+        ranges: new rs
+        ret: []
+        while [not? empty? ranges][
+            [start,end]: pop 'ranges
+            found?: false
+            loop data [dest,src,width][
+                intersect: @[max @[start, src], min @[end, src+width]]
+                if intersect\0 < intersect\1 [
+                    'ret ++ @->@[intersect\0 + dest - src, intersect\1 + dest - src]
+                    if intersect\0 > start -> 'ranges ++ @->@[start,intersect\0]
+                    if end > intersect\1 -> 'ranges ++ @->@[intersect\1,end]
+                    found?: true
+                    break
+                ]
+            ]
+            if not? found? -> 'ret ++ @->@[start,end]
+        ]
+        return ret
+    ]
+]
+
+do :: seeds | split.every:2
+            | map 'x -> @[x\0, x\0 + x\1]
+            | soil | fertilizer | water | light | temperature | humidity | location
+            | map 'x -> x\0
+            | sort | first | print
