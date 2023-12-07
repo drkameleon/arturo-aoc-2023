@@ -1,0 +1,12 @@
+hands: map read.lines ./"input.txt" => [p: split.by:" " &, @[p\0, to :integer p\1]]
+cards: to [:char] to [:string] reverse [A K Q J T] ++ @9..2
+points: function [hand][
+    clusters: arrange.descending cluster hand++" " => [&] => size
+    return add ((size clusters\1) + 5 * size clusters\0) * 13 ^ 5
+               sum map.with:'i hand 'x -> (index cards x) * 13 ^ 4-i
+]
+
+hands | arrange 'x -> points x\0
+      | map.with:'i 'x -> x\1 * inc i
+      | sum
+      | print
