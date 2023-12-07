@@ -1,5 +1,5 @@
 hands: map read.lines ./"input.txt" => [p: split.by:" " &, @[p\0, to :integer p\1]]
-cards: ['J'] ++ (@'2'..'9') ++ ['T' 'Q' 'K' 'A']
+cards: to [:char] "J23456789TQKA"
 points: function [hand][
     groups: arrange.descending cluster hand++" " => [&] => size
     unless empty? joker: <= strip to :string first first select.first groups 'g -> not? contains? g 'J' ->
