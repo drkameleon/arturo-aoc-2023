@@ -1,0 +1,13 @@
+hands: map read.lines ./"input.txt" => [p: split.by:" " &, @[p\0, to :integer p\1]]
+cards: ['J'] ++ (@'2'..'9') ++ ['T' 'Q' 'K' 'A']
+points: function [hand][
+    groups: arrange.descending cluster hand++" " => [&] => size
+    unless empty? joker: <= strip to :string first first select.first groups 'g -> not? contains? g 'J' ->
+        groups: arrange.descending cluster (replace hand "J" joker)++" " => [&] => size
+    add ((size groups\1) + 5 * size groups\0) * 13 ^ 5
+        sum map.with:'idx hand 'card -> (index cards card) * 13 ^ 4-idx
+]
+
+hands | arrange 'play -> points play\0
+      | map.with:'rank 'play -> play\1 * inc rank
+      | sum | print
