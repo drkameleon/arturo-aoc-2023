@@ -3,10 +3,9 @@ cards: (@'2'..'9') ++ ['T' 'J' 'Q' 'K' 'A']
 points: function [hand][
     groups: arrange.descending cluster hand++" " => [&] => size
     add ((size groups\1) + 5 * size groups\0) * 13 ^ 5
-        sum map.with:'i hand 'x -> (index cards x) * 13 ^ 4-i
+        sum map.with:'idx hand 'card -> (index cards card) * 13 ^ 4-idx
 ]
 
-hands | arrange 'x -> points x\0
-      | map.with:'i 'x -> x\1 * inc i
-      | sum
-      | print
+hands | arrange 'play -> points play\0
+      | map.with:'rank 'play -> play\1 * inc rank
+      | sum | print
