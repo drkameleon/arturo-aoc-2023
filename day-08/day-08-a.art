@@ -1,0 +1,9 @@
+data: split.by:"\n\n" replace read ./"input.txt" [" =","(",")"][":","[","]"]
+[directions, nodes]: @[to :block replace data\0 ["L","R"]["0 ","1 "], # to :block data\1]
+
+[current, counter]: @[nodes\AAA, 0]
+loop.forever directions 'd [
+    inc 'counter
+    if nodes\ZZZ = current: <= nodes\[current\[d]] -> break
+]
+print counter
