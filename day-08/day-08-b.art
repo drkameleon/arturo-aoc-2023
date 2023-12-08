@@ -1,0 +1,12 @@
+data: split.by:"\n\n" replace read ./"input.txt" [" =","(",")"][":","[","]"]
+[directions, nodes]: @[to :block replace data\0 ["L","R"]["0 ","1 "], # to :block data\1]
+
+print lcm map select keys nodes 'x -> suffix? x "A" 'target [
+    counter: 0
+    loop.forever directions 'd [
+        if suffix? to :string target "Z" -> break
+        inc 'counter
+        target: nodes\[target]\[d]
+    ]
+    counter
+]
