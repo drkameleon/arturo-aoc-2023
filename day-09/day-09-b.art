@@ -1,0 +1,8 @@
+data: split.every:21 @ to :block replace read ./"input.txt" "-" "neg "
+
+print sum map.with:'i data 'row [
+    current: row
+    fold.right @[first row] ++ map (dec size row)..1 'mx [
+        first current: <= map mx 'x -> current\[x] - current\[x-1]
+    ] [a, b]-> a-b
+]
