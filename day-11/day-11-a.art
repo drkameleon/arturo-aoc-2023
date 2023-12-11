@@ -12,5 +12,5 @@ galaxies:
             -> null
         => [not? null? &]
 
-print sum map combine.by:2 galaxies 'c ->
-    (abs c\0\0 - c\1\0) + (abs c\0\1 - c\1\1)
+print sum map combine.by:2 galaxies 'g ->
+    (abs g\0\0 - g\1\0) + (abs g\0\1 - g\1\1)
