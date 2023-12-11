@@ -1,0 +1,14 @@
+data: flatten sz: size first <= map read.lines ./"input.txt" => split
+command: #[
+    "S": @[1, sz], "F": @[1, sz], "|": @[neg sz, sz], "L": @[neg sz, 1]
+    "-": @[neg 1, 1], "J": @[neg 1, neg sz], "7": @[neg 1, sz]
+]
+start: index data "S"
+print (inc max map command\[data\[start]] 'initial [
+    [next,times]: @[start + dir: <= initial, 0]
+    while [next <> start][
+        next: next + dir: <= first select command\[data\[next]] 'x -> not? zero? x+dir
+        inc 'times
+    ]
+    times
+]) / 2
