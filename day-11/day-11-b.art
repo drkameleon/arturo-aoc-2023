@@ -1,0 +1,16 @@
+data: sz: size <= map read.lines ./"input.txt" => split
+emptyrows: select 0..dec sz 'x -> every? data\[x] 'item -> item="."
+emptycols: select 0..dec sz 'x -> every? data 'item -> item\[x]="."
+
+galaxies: 
+    flatten.once map 0..dec sz 'x ->
+        select map 0..dec sz 'y ->
+            (data\[y]\[x] = "#")? -> @[
+                x + 999999 * enumerate emptycols 'ec -> ec < x,
+                y + 999999 * enumerate emptyrows 'er -> er < y
+            ]
+            -> null
+        => [not? null? &]
+
+print sum map combine.by:2 galaxies 'g ->
+    (abs g\0\0 - g\1\0) + (abs g\0\1 - g\1\1)
