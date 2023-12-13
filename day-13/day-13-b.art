@@ -1,0 +1,16 @@
+data: map @ to :block "{" ++ (replace read ./"input.txt" "\n\n" "}{") ++ "}" => [split.lines &]
+
+reflections: function [pattern][
+    vertical?: not? null? attr 'vertical
+    rows: vertical? ? -> size pattern\0 -> size pattern
+    columns: dec vertical? ? -> size pattern -> size pattern\0
+    (first select dec rows 'r [
+        one? abs ((1+columns) * min @[r rows-r]) - sum map 0..dec min @[r rows-r] 'z ->
+            enumerate 0..columns 'c ->
+                vertical? ? -> pattern\[c]\[dec r-z] = pattern\[c]\[r+z]
+                            -> pattern\[dec r-z]\[c] = pattern\[r+z]\[c]
+    ]) ?? 0
+]
+
+print sum map data 'd ->
+    (reflections.vertical d) + 100 * reflections d
