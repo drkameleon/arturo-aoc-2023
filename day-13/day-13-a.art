@@ -3,7 +3,7 @@ data: map @ to :block "{" ++ (replace read ./"input.txt" "\n\n" "}{") ++ "}" => 
 reflections: function [pattern][
     vertical?: not? null? attr 'vertical
     rows: vertical? ? -> size pattern\0 -> size pattern
-    columns: vertical? ? -> dec size pattern -> size pattern\0
+    columns: dec vertical? ? -> size pattern -> size pattern\0
     (first select dec rows 'r ->
         every? 0..dec min @[r rows-r] 'z ->
             every? 0..columns 'c ->
