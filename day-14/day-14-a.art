@@ -1,0 +1,14 @@
+data: sz: size <= split.lines read ./"input.txt"
+
+loop 1..dec sz 'd ->
+    loop map match.bounds data\[d] "O" => first 'z [
+        i: d-1
+        while -> and? [i >= 0][not? contains? "#O" data\[i]\[z]][
+            data\[i]\[z]: "O"
+            data\[i+1]\[z]: "."
+            dec 'i
+        ]
+    ]
+
+print sum map sz 'p -> 
+    (match.count data\[p-1] {/O/}) * inc sz-p
