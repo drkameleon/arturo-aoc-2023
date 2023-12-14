@@ -1,0 +1,28 @@
+data: sz: size <= split.lines read ./"input.txt" 
+
+tiltAndRotate: function [m][
+    loop 1..dec sz 'd ->
+        loop map match.bounds m\[d] "O" => first 'z [
+            i: d-1
+            while -> and? [i >= 0][not? contains? "#O" m\[i]\[z]][
+                m\[i]\[z]: "O"
+                m\[i+1]\[z]: "."
+                dec 'i
+            ]
+        ]
+    return map 0..dec sz 'r -> join map (dec sz)..0 'x -> m\[x]\[r]
+]
+
+[cnt, seen, found]: [0, [], null]
+while ø [
+    if found: <= index seen data -> break
+    'seen ++ @[data]
+    do.times:4 -> data: tiltAndRotate new data
+    inc 'cnt 
+]
+
+do.times: (1000000000 - cnt) % cnt - found ->
+    do.times:4 -> data: tiltAndRotate new data
+
+print sum map sz 'p -> 
+    (match.count data\[p-1] {/O/}) * inc sz-p
