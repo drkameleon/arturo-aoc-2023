@@ -1,0 +1,4 @@
+data: split.by:"," first read.lines ./"input.txt"
+
+print sum map data 'step ->
+    fold step [a,b] -> (17 * a + to :integer b) % 256
