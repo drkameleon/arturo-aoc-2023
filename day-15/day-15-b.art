@@ -1,0 +1,14 @@
+data: map split.by:"," read ./"input.txt" 'step ->
+    first match.capture.named step {/(?<lbl>[a-z]+)(?<op>\-|=\d)/}
+
+hsh: function [lbl]-> fold lbl [a,b]-> (17 * a + to :integer b) % 256
+boxes: array.of:256 #[]
+
+loop data 'step [
+    h: hsh step\lbl
+    (step\op = "-")? -> boxes\[h]: remove.key boxes\[h] step\lbl
+                     -> boxes\[h]\[step\lbl]: to :integer first match step\op {/\d/}
+]
+
+print sum map.with:'b boxes 'box ->
+    sum map.with:'i box [k,v] -> v * (b+1) * i + 1
