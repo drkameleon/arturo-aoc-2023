@@ -1,0 +1,12 @@
+[workflows,parts]: @[ data: split.by:"\n\n" read ./"input.txt"
+   # to :block replace data\0 [":" "{" "}" "," {/([xmas][><])(\d+)} {/ ([a-z]+)/} {/\[([a-z]+)\]/} "A" "R" "[[return"] 
+                                      [" " ":[[" "]]" "][" "[p\$1$2]" " [w: workflows\$1]" "[[true] [w: workflows\$1]]" "[return true]" "[return false]" "[[true] [return"]
+   @ to :block replace data\1 ["{" "}" "="] ["#[" "]" ":"]
+]
+
+accepted?: function [p][
+    [w,i]: @[workflows\in, 0]
+    while [i < size w] -> (do w\[i]\0)? [ do w\[i]\1, i: 0] [ i: i + 1 ]
+]
+
+print sum map select parts => accepted? 'p -> p\x + p\m + p\a + p\s
