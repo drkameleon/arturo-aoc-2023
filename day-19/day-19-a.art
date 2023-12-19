@@ -1,6 +1,6 @@
 [workflows,parts]: @[ data: split.by:"\n\n" read ./"input.txt"
    # to :block replace data\0 [":" "{" "}" "," {/([xmas][><])(\d+)} {/ ([a-z]+)/} {/\[([a-z]+)\]/} "A" "R" "[[return"] 
-                                      [" " ":[[" "]]" "][" "[p\$1$2]" " [w: workflows\$1]" "[[true] [w: workflows\$1]]" "[return true]" "[return false]" "[[true] [return"]
+                              [" " ":[[" "]]" "][" "[p\$1$2]" " [w: workflows\$1]" "[[true] [w: workflows\$1]]" "[return true]" "[return false]" "[[true] [return"]
    @ to :block replace data\1 ["{" "}" "="] ["#[" "]" ":"]
 ]
 
